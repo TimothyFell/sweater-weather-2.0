@@ -18,7 +18,6 @@ describe 'Weather for a City' do
       response_hash = JSON.parse(response.body, symbolize_names: true)
 
       expect(response_hash).to have_key(:currently)
-      expect(response_hash[:currently]).to 
     end
 
     it 'should return hourly forecasts as json objects' do
