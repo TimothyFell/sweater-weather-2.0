@@ -1,7 +1,11 @@
-class GifsFacade
+class GifsFacade < FacadeBase
 
-  def initialize(daily_forecast)
-    @daily_forecast = daily_forecast
+  def initialize(location)
+    @location = location
+  end
+
+  def self.daily_gif_forecast_response(location)
+    new(location).daily_gif_forecast_response
   end
 
   def daily_gif_forecast_response
@@ -21,7 +25,7 @@ class GifsFacade
   end
 
   def time_summary_only
-    @daily_forecast.map do |d|
+    get_daily.map do |d|
       delete_other_key_value_pairs(d)
     end
   end
@@ -31,15 +35,5 @@ class GifsFacade
       k != :time && k != :summary
     end
   end
-
-  # Api Helpers
-
-  def gif_results(time_summary_only)
-    @_gif_results = service.get_gifs(time_summary_only)
-  end
-
-  def service
-    @_service ||= GiphyService.new
-  end
-
+  
 end

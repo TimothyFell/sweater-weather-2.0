@@ -1,5 +1,9 @@
 class GiphyService
 
+  def self.gifs(time_summary_only)
+    new.get_gifs(time_summary_only)
+  end
+
   def get_gifs(time_summary_only)
     time_summary_only.map do |ts|
       q = ts[:summary]
