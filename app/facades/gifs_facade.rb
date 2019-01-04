@@ -5,15 +5,16 @@ class GifsFacade
   end
 
   def daily_gif_forecast
-    time_summary_only
+    gif_results(time_summary_only)
   end
 
   private
 
+  # Helpers
+
   def time_summary_only
     @daily_forecast.map do |d|
       delete_other_key_value_pairs(d)
-      binding.pry
     end
   end
 
@@ -21,6 +22,16 @@ class GifsFacade
     d.delete_if do |k,v|
       k != :time && k != :summary
     end
+  end
+
+  # Api Helpers
+
+  def gif_results(time_summary_only)
+    @_gif_results ||= service.get_gifs(time_summary_only)
+  end
+
+  def service
+    @_service ||= GiphyService.new
   end
 
 end
