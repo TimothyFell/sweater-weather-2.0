@@ -13,7 +13,7 @@ describe 'DarkSkyService' do
 
     it 'should return hash of weather data for a specified location' do
       VCR.use_cassette("dark_sky_service_spec") do
-        forecast = @service.get_forecast(39.7392358,-104.990251)
+        forecast = DarkSkyService.forecast(39.7392358,-104.990251)
 
         expect(forecast).to be_a(Hash)
         expect(forecast).to have_key(:currently)
