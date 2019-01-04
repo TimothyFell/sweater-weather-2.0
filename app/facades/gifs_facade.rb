@@ -4,13 +4,21 @@ class GifsFacade
     @daily_forecast = daily_forecast
   end
 
-  def daily_gif_forecast
-    gif_results(time_summary_only)
+  def daily_gif_forecast_response
+    {
+      data: {
+        daily_forecasts: daily_gif_forecast
+      }
+    }
   end
 
   private
 
   # Helpers
+
+  def daily_gif_forecast
+    gif_results(time_summary_only)
+  end
 
   def time_summary_only
     @daily_forecast.map do |d|
@@ -27,7 +35,7 @@ class GifsFacade
   # Api Helpers
 
   def gif_results(time_summary_only)
-    @_gif_results ||= service.get_gifs(time_summary_only)
+    @_gif_results = service.get_gifs(time_summary_only)
   end
 
   def service

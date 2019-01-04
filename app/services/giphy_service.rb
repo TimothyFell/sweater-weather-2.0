@@ -4,9 +4,9 @@ class GiphyService
     time_summary_only.map do |ts|
       q = ts[:summary]
       url = "/v1/gifs/search?q=#{q}"
-      get_json(url)
+      ts[:url] = get_json(url)[:data][0][:url]
+      ts
     end
-    binding.pry
   end
 
   private

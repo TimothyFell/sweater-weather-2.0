@@ -11,18 +11,18 @@ describe 'Weather for a City with Gifs', :type => :request do
     end
 
     it 'should have a successful response' do
-      get '/api/v1/gifs?location=denver,co'
+      VCR.use_cassette("giphy_request_spec") do
+        get '/api/v1/gifs?location=denver,co'
 
-      expect(response).to be_successful
-    end
+        expect(response).to be_successful
 
-    it 'should be an array' do
-      get '/api/v1/gifs?location=denver,co'
+        parsed_response = JSON.parse(response.body, symbolize_names: true)
 
-      parsed_response = JSON.parse(response.body)
-
-      expect(parsed_response).to be_a(Array)
-      binding.pry
+        expect(parsed_response[:data][:daily_forecasts]).to be_a(Array)
+        expect(parsed_response[:data][:daily_forecasts].first).to have_key(:time)
+        expect(parsed_response[:data][:daily_forecasts].first).to have_key(:summary)
+        expect(parsed_response[:data][:daily_forecasts].first).to have_key(:url)
+      end
     end
 
   end
