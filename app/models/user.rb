@@ -3,11 +3,8 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation:true
 
   def self.user_create(params)
-    stuff = {}
-    stuff[:email] = params["email"]
-    stuff[:password] = params["password"]
-    stuff[:password_confirmation] = params["password_confirmation"]
-    stuff[:api_key] = SecureRandom.uuid
+    stuff = params.to_h
+    stuff["api_key"] = SecureRandom.uuid
     User.create(stuff)
   end
 

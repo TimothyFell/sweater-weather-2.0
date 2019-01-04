@@ -1,5 +1,13 @@
 class DarkSkyService
 
+  def self.daily(lat,lng)
+    new.get_forecast(lat,lng)[:daily][:data]
+  end
+
+  def self.forecast(lat,lng)
+    new.get_forecast(lat,lng)
+  end
+
   def get_forecast(lat,lng)
     get_json("forecast/#{ENV['DARK_SKY_API_KEY']}/#{lat},#{lng}")
   end
