@@ -16,6 +16,14 @@ describe 'Weather for a City with Gifs', :type => :request do
       expect(response).to be_successful
     end
 
+    it 'should be an array' do
+      get '/api/v1/gifs?location=denver,co'
+
+      parsed_response = JSON.parse(response.body)
+
+      expect(parsed_response).to be_a(Array)
+    end
+
   end
 
 end
