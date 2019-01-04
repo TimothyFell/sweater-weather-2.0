@@ -12,15 +12,34 @@ describe 'Weather for a City' do
 
     it 'should return current weather as a json object' do
       get '/api/v1/forecast?location=denver,co'
+
       expect(response).to be_successful
+
+      response_hash = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_hash).to have_key(:currently)
+      expect(response_hash[:currently]).to 
     end
 
-    xit 'should return hourly forecasts as json objects' do
+    it 'should return hourly forecasts as json objects' do
+      get '/api/v1/forecast?location=denver,co'
+
+      expect(response).to be_successful
+
+      response_hash = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_hash).to have_key(:hourly)
 
     end
 
-    xit 'should return daily forecasts as json objects' do
+    it 'should return daily forecasts as json objects' do
+      get '/api/v1/forecast?location=denver,co'
 
+      expect(response).to be_successful
+
+      response_hash = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_hash).to have_key(:daily)
     end
 
   end
