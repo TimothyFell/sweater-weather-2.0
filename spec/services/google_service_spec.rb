@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 describe 'GoogleService' do
-  before(:each) do
-    @service = GoogleService.new
-  end
 
   it 'exists' do
-    expect(@service).to be_a(GoogleService)
+    service = GoogleService.new
+    expect(service).to be_a(GoogleService)
   end
 
   describe '#get_lat_lon' do
