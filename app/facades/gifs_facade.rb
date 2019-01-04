@@ -12,7 +12,8 @@ class GifsFacade < FacadeBase
     {
       data: {
         daily_forecasts: daily_gif_forecast
-      }
+      },
+      copyright: "2018"
     }
   end
 
@@ -35,5 +36,5 @@ class GifsFacade < FacadeBase
       k != :time && k != :summary
     end
   end
-  
+
 end
