@@ -13,7 +13,7 @@ class GifsFacade < FacadeBase
       data: {
         daily_forecasts: daily_gif_forecast
       },
-      copyright: "2018"
+      copyright: "#{Date.today.year}"
     }
   end
 
