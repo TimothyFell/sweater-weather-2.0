@@ -22,6 +22,7 @@ describe 'Weather for a City with Gifs', :type => :request do
       parsed_response = JSON.parse(response.body)
 
       expect(parsed_response).to be_a(Array)
+      binding.pry
     end
 
   end

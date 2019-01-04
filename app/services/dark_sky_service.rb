@@ -1,7 +1,11 @@
 class DarkSkyService
 
-  def get_daily(lat,lng)
-    get_forecast(lat,lng)[:daily][:data]
+  def self.daily(lat,lng)
+    new.get_forecast(lat,lng)[:daily][:data]
+  end
+
+  def self.forecast(lat,lng)
+    new.get_forecast(lat,lng)
   end
 
   def get_forecast(lat,lng)
