@@ -9,6 +9,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faraday'
 gem 'fast_jsonapi'
 gem 'figaro'
+gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -17,6 +18,7 @@ group :development, :test do
   gem 'webmock'
   gem 'pry'
   gem 'simplecov'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do

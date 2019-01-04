@@ -9,6 +9,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
+require 'securerandom'
+
 
 VCR.configure do |config|
   config.ignore_localhost = true
@@ -21,6 +23,14 @@ end
 
 SimpleCov.start "rails" do
   add_filter "app/channels"
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+
+    with.library :rails
+  end
 end
 
 begin
