@@ -6,5 +6,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :api_key
       t.timestamps
     end
+    add_index :users, :email
   end
 end
