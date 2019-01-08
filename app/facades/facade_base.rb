@@ -10,6 +10,10 @@ class FacadeBase
     DarkSkyService.forecast(get_lat_lon[:lat],get_lat_lon[:lng])
   end
 
+  def get_current
+    DarkSkyService.forecast(get_lat_lon[:lat],get_lat_lon[:lng])[:currently]
+  end
+
   def get_daily
     DarkSkyService.daily(get_lat_lon[:lat],get_lat_lon[:lng])
   end
