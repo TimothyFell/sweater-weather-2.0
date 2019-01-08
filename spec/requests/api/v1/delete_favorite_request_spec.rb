@@ -25,7 +25,8 @@ describe 'User sends a request to delete a favorite', :type => :request do
           {"api_key"=>"potato",
            "location"=>"Denver, CO",
            "controller"=>"api/v1/favorites",
-           "action"=>"destroy", "favorite"=>{}}, :headers => @headers
+           "action"=>"destroy", "favorite"=>{"api_key"=>"potato",
+            "location"=>"Denver, CO"}}, :headers => @headers
       end
 
       it 'should be successful' do
@@ -50,7 +51,8 @@ describe 'User sends a request to delete a favorite', :type => :request do
           {"api_key"=>"george",
            "location"=>"Denver, CO",
            "controller"=>"api/v1/favorites",
-           "action"=>"destroy", "favorite"=>{}}, :headers => @headers
+           "action"=>"destroy", "favorite"=>{"api_key"=>"george",
+            "location"=>"Denver, CO"}}, :headers => @headers
 
         expect(response).to_not be_successful
         expect(response.status).to eq(401)
@@ -61,7 +63,8 @@ describe 'User sends a request to delete a favorite', :type => :request do
           {"api_key"=>"potato",
            "location"=>"New York, NY",
            "controller"=>"api/v1/favorites",
-           "action"=>"destroy", "favorite"=>{}}, :headers => @headers
+           "action"=>"destroy", "favorite"=>{"api_key"=>"potato",
+            "location"=>"New York, NY"}}, :headers => @headers
 
         expect(response).to_not be_successful
         expect(response.status).to eq(401)
