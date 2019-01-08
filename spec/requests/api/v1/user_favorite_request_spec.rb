@@ -82,7 +82,6 @@ describe 'User Favorites Locations' do
              "controller"=>"api/v1/favorites",
              "action"=>"create", "favorite"=>{"location"=>"Denver, CO",
               "api_key"=>"george"}}, :headers => headers
-
           expect(response).to_not be_successful
         end
       end
