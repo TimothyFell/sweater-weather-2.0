@@ -19,10 +19,24 @@ class Api::V1::FavoritesController < ApplicationController
     end
   end
 
+  def destroy
+    if user_by_api_key && user_favorite?(clean_location)
+      facade = FavoritesFacade.new(user_by_api_key)
+      facade.delete_favorite(clean_location)
+      render json:'Accepted',status:202
+    else
+      render json:'Unauthorized',status:401
+    end
+  end
+
   private
 
   def user_by_api_key
-    user = User.find_by(api_key: favorite_params["api_key"])
+    User.find_by(api_key: favorite_params["api_key"])
+  end
+
+  def user_favorite?(location)
+    user_by_api_key.favorites.pluck(:location).include?(location)
   end
 
   def clean_location
