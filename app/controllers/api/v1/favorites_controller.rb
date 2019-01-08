@@ -19,6 +19,16 @@ class Api::V1::FavoritesController < ApplicationController
     end
   end
 
+  def destroy
+    if user_by_api_key
+      facade = FavoritesFacade.new(user_by_api_key)
+      facade.delete_favorite(clean_location)
+      render json:'Accepted',status:202
+    else
+      render json:'Unauthorized',status:401
+    end
+  end
+
   private
 
   def user_by_api_key
