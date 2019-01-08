@@ -15,11 +15,11 @@ class FavoritesFacade < FacadeBase
   end
 
   def delete_favorite(location)
-    user_favorites = @user.user_favorites
-    favorite_id = Favorite.find_by(location: location).id
-    user_favorites.each { |user_fav|
-      user_fav.destroy if user_fav.favorite_id == favorite_id
-    }
+      user_favorites = @user.user_favorites
+      favorite_id = Favorite.find_by(location: location).id
+      user_favorites.each { |user_fav|
+        user_fav.destroy if user_fav.favorite_id == favorite_id
+      }
   end
 
 end
