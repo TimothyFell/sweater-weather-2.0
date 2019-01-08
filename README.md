@@ -1,24 +1,21 @@
-# README
+# Sweater Weather: Mod 3 Week 6 Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app consumes the [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/) and the [Dark Skies Weather API](https://darksky.net/dev) to allow users to get weather data for a location, create an account, login, and manage favorite locations and retrieve their weather.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+### Clone
 
-* System dependencies
+### Bundle
 
-* Configuration
+### Create Database
 
-* Database creation
+## Configuration
 
-* Database initialization
+### Gem: Figaro
 
-* How to run the test suite
+### API's
 
-* Services (job queues, cache servers, search engines, etc.)
+## Running Tests
 
-* Deployment instructions
-
-* ...
+## Contributing
