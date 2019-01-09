@@ -335,15 +335,20 @@ $ bundle exec rspec ./spec/path/to/file/or/directory
   ````
   #### Params:
   ````ruby
-  location: New York, NY # city, state initials
+  # nothing required
   ````
   #### Body:
   ````ruby
-  # nothing
+  {
+    "email": "whatever@example.com",
+    "password": "password"
+  }
   ````
   #### Response:
   ````ruby
-  # tbd
+  {
+    "api_key" => "a153e9ea-50af-4355-9072-9a9f2ce70149"
+  }
   ````
 
 ### 4. Favoriting Locations
@@ -355,15 +360,19 @@ $ bundle exec rspec ./spec/path/to/file/or/directory
   ````
   #### Params:
   ````ruby
-  location: New York, NY # city, state initials
+  # nothing required
   ````
   #### Body:
   ````ruby
-  # nothing
+  {
+    "location": "boston,ma",
+    "api_key": "a153e9ea-50af-4355-9072-9a9f2ce70149"
+  }
   ````
   #### Response:
   ````ruby
-  # tbd
+  # no json response
+  # should get a http status of 204, No Content
   ````
 
 ### 5. Listing Favorite Locations
@@ -375,15 +384,43 @@ $ bundle exec rspec ./spec/path/to/file/or/directory
   ````
   #### Params:
   ````ruby
-  location: New York, NY # city, state initials
+  # nothing required
   ````
   #### Body:
   ````ruby
-  # nothing
+  {
+    "api_key": "40390ddf-dbc6-4c42-acb3-3c35055a2e43"
+  }
   ````
   #### Response:
   ````ruby
-  # tbd
+  [
+      {
+          "location": "denver,co",
+          "current_weather": {
+              "time": 1547043582,
+              "summary": "Partly Cloudy",
+              "icon": "partly-cloudy-night",
+              "nearestStormDistance": 344,
+              "nearestStormBearing": 346,
+              "precipIntensity": 0,
+              "precipProbability": 0,
+              "temperature": 26.33,
+              "apparentTemperature": 26.33,
+              "dewPoint": 13.08,
+              "humidity": 0.57,
+              "pressure": 1028.61,
+              "windSpeed": 2.08,
+              "windGust": 3.61,
+              "windBearing": 248,
+              "cloudCover": 0.33,
+              "uvIndex": 0,
+              "visibility": 6.78,
+              "ozone": 253.55
+          }
+      },
+      { ... } # this hash repeats for each lcoation favorited
+  ]
   ````
 
 ### 6. Removing Favorite Locations
@@ -395,13 +432,17 @@ $ bundle exec rspec ./spec/path/to/file/or/directory
   ````
   #### Params:
   ````ruby
-  location: New York, NY # city, state initials
+  # nothing required
   ````
   #### Body:
   ````ruby
-  # nothing
+  {
+    "location": "boston,ma",
+    "api_key": "40390ddf-dbc6-4c42-acb3-3c35055a2e43"
+  {
   ````
   #### Response:
   ````ruby
-  # tbd
+  # no json response
+  # should get a http status of 202, Accepted
   ````
